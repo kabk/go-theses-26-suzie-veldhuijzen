@@ -1,167 +1,238 @@
 @charset "UTF-8";
 
-
-
-/* @FONT FACE (enable the use of 'custom fonts' inside your document) */
-
-/* 
-  You can use 'fontsquirrel' (https://www.fontsquirrel.com) 
-  or 'transfonter' (https://transfonter.org)
-  to generate your own font for the web from .ttf or .oft files 
-*/
-
+/* @FONT FACE (enable the use of custom fonts inside your document) */
 @font-face {
-    font-family: 'Your Font Name';
-    src: url('../fonts/yourfontname/yourfontname-roman.woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+  font-family: "Your Font Name";
+  src: url("../fonts/yourfontname/yourfontname-roman.woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
 
 @font-face {
-    font-family: 'Your Font Name';
-    src: url('../fonts/yourfontname/yourfontname-italic.woff2');
-    font-weight: normal;
-    font-style: italic;
-    font-display: block;
+  font-family: "Your Font Name";
+  src: url("../fonts/yourfontname/yourfontname-italic.woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: block;
 }
-
-
 
 /* VARIABLES */
-
 :root {
-  /* Color values */
-  --color-background: rgba(255,255,255,1);
-  --color-text: rgba(0,0,0,1);
-  --color-text-link: rgba(255, 0, 0, 0.8);
-  --color-text-link-hover: rgba(200, 28, 28, 0.4);
-  /* Font values */
-  --font-text: 'Your Font Name', 'Helvetica', 'Arial', sans-serif;
-  --font-size: 24px;
-  /* Margin values */
-  --margin: 10rem;
+  --color-background: /* #0000ff;*/ #0000ff;
+  --color-background-overlay: rgba(0, 0, 255, 0.75);
+  --color-text: #fcfcfccc;
+  --color-heading: #fcfcfccc;
+  --color-text-link: rgba(252, 252, 252, 0.8);
+  --color-text-link-hover: #ffffff;
 
-
-  /* Examples of possible variables */
-
-  --font-size-heading: calc(var(--font-size) * 2);
-    --color-text-heading: rgb(169, 22, 22);
-  --font-size-subheading: calc(var(--font-size) * 1.25);
-  --font-size-caption: calc(var(--font-size) * 0.875);
-
-  --margin-xs: calc(var(--margin) * 0.5);
-  --margin-s: calc(var(--margin) * 1);
-  --margin-m: calc(var(--margin) * 2);
-  --margin-l: calc(var(--margin) * 3);
-  --margin-xl: calc(var(--margin) * 5);
-
+  --font-text: "Tiro Kannada", serif;
+  --font-heading: /*Arial, sans-serif; */"Tiro Kannada", serif;
+  --font-size-base: 20px;
+  --content-font-size: 2rem;
+  --page-padding: 2rem;
 }
 
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-
-/* GENERAL STYLES */
-
+/* BASE */
 html {
-  font: var(--font-size) var(--font-family);
-  color: var(--color-text);
+  font-size: var(--font-size-base);
   background-color: var(--color-background);
+  scroll-behavior: smooth;
+}
+html, body, body * {
+  cursor: url("../images/favicon/broodjewit.png") 16 16, auto;
+}
+a, button, [role="button"] {
+  cursor: url("../images/favicon/boek.png") 16 16, pointer;
 }
 
 body {
-  position:relative;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
   background-color: var(--color-background);
-  font: var(--font-size) var(--font-family);
   color: var(--color-text);
-  width:100%;
-  height:auto;
-  overflow-y:auto;
+  font-family: var(--font-text);
+  line-height: 1.3;
+}
+
+
+header {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--page-padding);
+  pointer-events: none;
 }
 
 a {
   color: var(--color-text-link);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:hover {
   color: var(--color-text-link-hover);
-  text-decoration: underline;
 }
 
+p + p {
+  margin-top: 1rem;
+}
+p {
+  text-indent: 1em;
+}
 
-h1{
-  /* h1 style */
-  font-size: clamp(
-    var(--font-size-heading),
-    4vw,
-    calc(var(--font-size-heading) * 1.25)
+blockquote {
+  margin-block: 2rem;
+  padding-left: 2rem;
+
+  font-weight: 300;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-heading);
+  margin-block: 2rem 1rem;
+}
+
+h1,h2,h3,h4 {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+}
+
+h1 {
+  font-size: clamp(4rem, 4vw, 3.5rem);
+  line-height: 1.2;
+  text-wrap: balance;
+  max-width: 28ch;
+  white-space: nowrap;
+}
+
+h1 em {
+  display: inline;
+  margin-left: 0.25em;
+}
+
+h2 {
+  margin-block: 8rem 1.5rem;
+  line-height: 1.2;
+  text-wrap: balance;
+    font-size: clamp(3rem, 4vw, 3.5rem);
+    text-align: center;
+     transform: translateX(-75px);
+}
+
+header > * {
+  text-align: center;
+}
+
+.bibliography {
+  font-size: 1rem;
+  line-height: 1.3rem;
+    text-indent: 0;
+}
+.bibliography p {
+  text-indent: 0;
+}
+.blue-dot {
+  color: blue; /* or #0000ff */
+}
+main {
+  display: grid;
+  grid-template-columns: 12ch minmax(0, 1fr);
+  gap: 2rem;
+  margin-inline: var(--page-padding);
+   margin-top: 100vh;
+  position: relative;
+  z-index: 2;
+  background-color: var(--color-background);
+   padding-top: 3rem;
+     padding-bottom: 3rem;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -4rem;
+  width: 100%;
+  height: 4rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 255, 0),
+    var(--color-background-overlay)
   );
+  pointer-events: none;
 }
 
-h2{
-  /* h2 style */
+main > nav {
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+  font-size: 0.9rem;
 }
 
-h3{
-  /* h3 style */
+main > nav > ul {
+  list-style: none;
+}
+main > nav > ul *{
+  white-space: nowrap;
 }
 
-h4, h5, h6{
-  /* h4-h5-h6 style */
+main > nav li + li {
+  margin-top: 0.5rem;
+}
+/* Different cursor per navigation button */
+main > nav li:nth-child(1) a {
+  cursor: url("../images/cursors/abstract.png") 16 16, pointer;
 }
 
-p{
-  /* paragraph style */
+main > nav li:nth-child(2) a {
+  cursor: url("../images/cursors/line.png") 16 16, pointer;
 }
 
-ol, ul{
-  /* ordered list and unordered list styles */
+main > nav li:nth-child(3) a {
+  cursor: url("../images/cursors/brew.png") 16 16, pointer;
 }
 
-blockquote{
-  /* blockquote element style */
+main > nav li:nth-child(4) a {
+  cursor: url("../images/cursors/leffers.png") 16 16, pointer;
 }
 
-hr{
-  /* horizontal rule style */
+main > nav li:nth-child(5) a {
+  cursor: url("../images/cursors/dung.png") 16 16, pointer;
 }
 
-
-
-/* PAGE STYLES */
-
-/* page structure */
-
-div.page-wrapper {
-  /* the element that 'wraps' everything */
-  padding: var(--margin);
+main > nav li:nth-child(6) a {
+  cursor: url("../images/cursors/abstract.png") 16 16, pointer;
+}
+main > nav li:nth-child(7) a {
+  cursor: url("../images/cursors/abstract.png") 16 16, pointer;
 }
 
-/* navigation */
- 
-nav{
-  
+main > section > div {
+  max-width: min(40ch, 80vw);
+  margin-inline: auto;
+  font-size: var(--content-font-size);
+    overflow-wrap: break-word;
+  word-break: brake-word;
 }
 
-/* content */
-
-main{
- 
+summary {
+  cursor: pointer;
 }
 
-summary{
-  
-}
-
-
-
-
-
-
-/* UTILITY CLASSES */
-
-/* hide desktop mobile etc */
-
+/* Utility classes */
 .desktop-only {
   display: block;
 }
@@ -170,71 +241,79 @@ summary{
   display: none;
 }
 
+/* Existing optional hero styles */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.hero-inner {
+  color: var(--color-heading);
+  text-align: center;
+}
 
+.main-text {
+  display: inline-block;
+  line-height: 1.1;
+  color: var(--color-heading);
+  font-size: clamp(3rem, 12vw, 9rem);
+  font-style: italic;
 
+}
 
-/* WEBSITE MEDIA QUERIES */
+.small-text {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--color-heading);
+  font-style: italic;
 
-/* responsive typeface for various breaking points, sets the default 'rem' value */
-@media (max-width: 299px) { :root{--font-size: 18px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 299px) and (max-width: 340px) { :root{--font-size: 19px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 340px) and (max-width: 440px) { :root{--font-size: 20px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 441px) and (max-width: 779px) { :root{--font-size: 19px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 780px) and (max-width: 992px) { :root{--font-size: 20px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 993px) and (max-width: 1200px) { :root{--font-size: 21px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 1201px) and (max-width: 1320px) { :root{--font-size: 22px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 1321px) { :root{--font-size: 24px;} html, body {font: var(--font-size) var(--font-text); } }
+}
 
-/* styles for 'mobile', screen sizes up to 779px, should covers 'mobile' and 'tablet' */
-/* style this one first and then use the subsequent ones in a cascading way (from general to specific) */
+.divider {
+  width: 100%;
+  height: 2px;
+  margin-top: 2rem;
+  background-color: var(--color-heading);
+}
+
+.subtitle {
+  margin-top: 1rem;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-style: italic;
+  text-align: center;
+}
 
 @media (max-width: 779px) {
-
-  /* your 'mobile' overriding css properties here */
-
-
-
-  /* utility classes, mobile */
-
-  .desktop-only{
-    display:none;
+  :root {
+    --font-size-base: 18px;
+    --content-font-size: 1.05rem;
+    --page-padding: 1rem;
   }
 
-  .mobile-only{
-    display:block;
+  main {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+   
   }
 
+  main > nav {
+    position: static;
+  }
+
+
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
 }
-
-
-
-/* use this query to apply style changes to smaller smartphones sizes (like an iPhone 5S or SE 2016), max size of 339px */
-
-@media (max-width: 339px) {
-
-  /* your overriding css properties here */
-
-}
-
-
-
-/* use this query to apply style changes for 'mobile' screen sizes that are flipped in 'landscape' mode */
-
-@media (max-width: 779px) and (orientation: landscape) {
-
-   /* your overriding css properties here */
-
-}
-
-
-
-/* use this query to apply style for 'small' desktop screens */
-
-@media (min-width: 780px) and (max-width: 992px) {
-
-  /* your overriding css properties here */
-
-}
-
 
