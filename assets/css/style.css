@@ -299,11 +299,30 @@ summary {
   main {
     grid-template-columns: 1fr;
     gap: 1rem;
+        margin-top: 100vh;
    
   }
 
   main > nav {
-    position: static;
+       position: relative;
+    top: 0.5rem;
+    z-index: 5;
+    font-size: 1.9rem;
+    background-color: var(--color-background-overlay);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    
+  }
+  main > section > div {
+    max-width: min(90ch, 180vw);
+  }
+  .bibliography {
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+  }
+
+  .bibliography p {
+    margin-top: 0.3rem;
   }
 
 
@@ -315,5 +334,7 @@ summary {
   .mobile-only {
     display: block;
   }
+
+  
 }
 
