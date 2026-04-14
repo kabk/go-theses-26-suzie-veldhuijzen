@@ -296,10 +296,21 @@ summary {
     --page-padding: 1rem;
   }
 
+
+
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
   main {
     grid-template-columns: 1fr;
     gap: 1rem;
-        margin-top: 100vh;
+        margin-top: 0vh;
    
   }
 
@@ -324,17 +335,6 @@ summary {
   .bibliography p {
     margin-top: 0.3rem;
   }
-
-
-
-  .desktop-only {
-    display: none;
-  }
-
-  .mobile-only {
-    display: block;
-  }
-
   
 }
 
