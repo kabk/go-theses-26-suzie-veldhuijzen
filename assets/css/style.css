@@ -19,7 +19,10 @@
 
 /* VARIABLES */
 :root {
-  --color-background: /* #0000ff;*/ #d42700;
+  /* --color-background: #0000ff; #0000d4; */
+  --color-background:
+    /* #0000ff;*/
+    red;
   --color-background-overlay: rgba(0, 0, 255, 0.75);
   --color-text: #fcfcfccc;
   --color-heading: #fcfcfccc;
@@ -27,7 +30,9 @@
   --color-text-link-hover: #ffffff;
 
   --font-text: "Tiro Kannada", serif;
-  --font-heading: /*Arial, sans-serif; */"Tiro Kannada", serif;
+  --font-heading:
+    /*Arial, sans-serif; */
+    "Tiro Kannada", serif;
   --font-size-base: 20px;
   --content-font-size: 2rem;
   --page-padding: 2rem;
@@ -46,10 +51,16 @@ html {
   background-color: var(--color-background);
   scroll-behavior: smooth;
 }
-html, body, body * {
+
+html,
+body,
+body * {
   cursor: url("../images/favicon/broodjewit.png") 16 16, auto;
 }
-a, button, [role="button"] {
+
+a,
+button,
+[role="button"] {
   cursor: url("../images/favicon/boek.png") 16 16, pointer;
 }
 
@@ -85,9 +96,10 @@ a:hover {
   color: var(--color-text-link-hover);
 }
 
-p + p {
+p+p {
   margin-top: 1rem;
 }
+
 p {
   text-indent: 1em;
 }
@@ -105,7 +117,10 @@ hr {
   margin-block: 2rem 1rem;
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   color: var(--color-heading);
   font-family: var(--font-heading);
 }
@@ -127,37 +142,41 @@ h2 {
   margin-block: 8rem 1.5rem;
   line-height: 1.2;
   text-wrap: balance;
-    font-size: clamp(3rem, 4vw, 3.5rem);
-    text-align: center;
-     transform: translateX(-75px);
+  font-size: clamp(3rem, 4vw, 3.5rem);
+  text-align: center;
+  transform: translateX(-75px);
 }
 
-header > * {
+header>* {
   text-align: center;
 }
 
 .bibliography {
   font-size: 1rem;
   line-height: 1.3rem;
-    text-indent: 0;
+  text-indent: 0;
 }
+
 .bibliography p {
   text-indent: 0;
 }
+
 .blue-dot {
-  color: blue; /* or #0000ff */
+  color: blue;
+  /* or #0000ff */
 }
+
 main {
   display: grid;
   grid-template-columns: 12ch minmax(0, 1fr);
   gap: 2rem;
   margin-inline: var(--page-padding);
-   margin-top: 100vh;
+  margin-top: 100vh;
   position: relative;
   z-index: 2;
   background-color: var(--color-background);
-   padding-top: 3rem;
-     padding-bottom: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 main::before {
@@ -167,64 +186,65 @@ main::before {
   top: -4rem;
   width: 100%;
   height: 4rem;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 255, 0),
-    var(--color-background-overlay)
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 255, 0),
+      var(--color-background-overlay));
   pointer-events: none;
 }
 
-main > nav {
+main>nav {
   position: sticky;
   top: 2rem;
   height: fit-content;
   font-size: 0.9rem;
 }
 
-main > nav > ul {
+main>nav>ul {
   list-style: none;
 }
-main > nav > ul *{
+
+main>nav>ul * {
   white-space: nowrap;
 }
 
-main > nav li + li {
+main>nav li+li {
   margin-top: 0.5rem;
 }
+
 /* Different cursor per navigation button */
-main > nav li:nth-child(1) a {
+main>nav li:nth-child(1) a {
   cursor: url("../images/cursors/abstract.png") 16 16, pointer;
 }
 
-main > nav li:nth-child(2) a {
+main>nav li:nth-child(2) a {
   cursor: url("../images/cursors/line.png") 16 16, pointer;
 }
 
-main > nav li:nth-child(3) a {
+main>nav li:nth-child(3) a {
   cursor: url("../images/cursors/brew.png") 16 16, pointer;
 }
 
-main > nav li:nth-child(4) a {
+main>nav li:nth-child(4) a {
   cursor: url("../images/cursors/leffers.png") 16 16, pointer;
 }
 
-main > nav li:nth-child(5) a {
+main>nav li:nth-child(5) a {
   cursor: url("../images/cursors/dung.png") 16 16, pointer;
 }
 
-main > nav li:nth-child(6) a {
-  cursor: url("../images/cursors/abstract.png") 16 16, pointer;
-}
-main > nav li:nth-child(7) a {
+main>nav li:nth-child(6) a {
   cursor: url("../images/cursors/abstract.png") 16 16, pointer;
 }
 
-main > section > div {
+main>nav li:nth-child(7) a {
+  cursor: url("../images/cursors/abstract.png") 16 16, pointer;
+}
+
+main>section>div {
   max-width: min(40ch, 80vw);
   margin-inline: auto;
   font-size: var(--content-font-size);
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
   word-break: brake-word;
 }
 
@@ -289,6 +309,16 @@ summary {
   text-align: center;
 }
 
+
+
+.desktop-only {
+  display: none;
+}
+
+.mobile-only {
+  display: block;
+}
+
 @media (max-width: 779px) {
   :root {
     --font-size-base: 18px;
@@ -296,26 +326,14 @@ summary {
     --page-padding: 1rem;
   }
 
-
-
-
-  .desktop-only {
-    display: none;
-  }
-
-  .mobile-only {
-    display: block;
-  }
-
   main {
     grid-template-columns: 1fr;
     gap: 1rem;
-        margin-top: 0vh;
-   
+    margin-top: 0vh;
   }
 
-  main > nav {
-       position: relative;
+  main>nav {
+    position: relative;
     top: 0.5rem;
     z-index: 5;
     font-size: 1.9rem;
@@ -324,9 +342,15 @@ summary {
     border-radius: 0.5rem;
     
   }
-  main > section > div {
+
+  main>nav>ul {
+    /* background-color: lime!important; */
+  }
+
+  main>section>div {
     max-width: min(90ch, 180vw);
   }
+
   .bibliography {
     font-size: 1.2rem;
     line-height: 1.7rem;
@@ -335,6 +359,5 @@ summary {
   .bibliography p {
     margin-top: 0.3rem;
   }
-  
-}
 
+}
